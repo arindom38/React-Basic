@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.css'; // the style will be applied to all the components
 import App from './App';
 
 //This function render all the components and add them inside the root
