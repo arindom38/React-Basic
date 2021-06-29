@@ -6,11 +6,13 @@ const Home = () => {
     const [blogs,setBlog] = useState([
         {title: "React Begining",body:"A react ....",author:"Kyle",id:1}, //an object
         {title: "Node js Begining",body:"A NOde js ....",author:"Jack",id:2},
-        {title: "Spring MVC",body:"A Spring ....",author:"Mario",id:3},
+        {title: "Spring MVC",body:"A Spring ....",author:"Kyle",id:3},
     ])
     return ( 
         <div className="home">
             <BlogList blogs={blogs} title="All blogs" /> {/* Props pass value from one ccomponent to another*/} 
+            {/* props can be reuse with different functionality*/} 
+            <BlogList blogs={blogs.filter(blog => ( blog.author === 'Kyle'))} title="Kyle's blogs" /> {/*filtering the blogs, only kyle blogs show*/} 
         </div>
      );
 }
