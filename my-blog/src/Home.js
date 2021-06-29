@@ -1,17 +1,20 @@
-const Home = () => {
-    const handleClick = (e) => {
-        console.log("Hello Coders",e)
-    }
+import { useState } from "react";
 
-    const handleClickAgain = (name,e) => {
-        console.log("Hello Mr. "+name,e)
+const Home = () => {
+    //reactive value
+    const [name,setName] = useState("Jack") //initial value jack
+    const [age,setAge] = useState(20) //initial age 20
+
+    const handleClick = () => {
+        //change state on clik event
+        setName("Mario")
+        setAge(30)    
     }
     return ( 
         <div className="home">
             <h1>Home Page</h1>
+            <p>{name} is {age} years old</p>
             <button onClick={handleClick}>Click Me</button>
-            {/* handleClickAgain("Pijush") will print without click events, but with anonymous function call it call only click event */}
-            <button onClick={(e) => handleClickAgain("Pijush",e)}>Click Me Again</button> 
         </div>
      );
 }
