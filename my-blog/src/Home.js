@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import BlogList from "./BlogList";
-
+//command for integrating json server: npx json-server --watch data/Db.json --port 8000
 const Home = () => {
     //output lists
     const [blogs,setBlog] = useState([
