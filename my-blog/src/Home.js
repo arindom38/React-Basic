@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -8,10 +8,13 @@ const Home = () => {
         {title: "Node js Begining",body:"A NOde js ....",author:"Jack",id:2},
         {title: "Spring MVC",body:"A Spring ....",author:"Kyle",id:3},
     ])
+
+    //this function execute in evertime this component is rendered
+    useEffect(() => {
+     console.log("I will come everytime you render")   
+    })
+
     const handleDelete = (id) => {
-        //for understanding the flow see console
-        console.log("Home: "+id)
-        //filter out the blog that to be deleted
         const newBlogs = blogs.filter(blog=> (blog.id !== id))
         setBlog(newBlogs)
     }
