@@ -1,7 +1,5 @@
 //this props component is reuseable 
-const BlogList = (props) => {
-    const blogs = props.blogs
-    const title = props.title
+const BlogList = ({blogs,title}) => { //Refactoring 
     return (
         <div className="Blog-List">
         <h2>{title}</h2>
