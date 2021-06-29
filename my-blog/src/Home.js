@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BlogList from "./BlogList";
 
 const Home = () => {
     //output lists
@@ -9,13 +10,7 @@ const Home = () => {
     ])
     return ( 
         <div className="home">
-            {blogs.map(blog => (
-                <div className="blog-preview" key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <h4>Created By {blog.author}</h4>
-                    <p>{blog.body}</p>
-                </div>
-            ))}
+            <BlogList blogs={blogs} title="All blogs" /> {/* Props pass value from one ccomponent to another*/} 
         </div>
      );
 }
