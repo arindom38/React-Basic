@@ -1,29 +1,32 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 //command for integrating json server: npx json-server --watch data/Db.json --port 8000
 const Home = () => {
     //output lists
-    const [blogs,setBlog] = useState(null)
+    const [blogs, setBlog] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+
 
     useEffect(() => {
-     //get all the blogs
-     fetch(' http://localhost:8000/blogs')
-        .then(result => {
-            return result.json() //async: first fetch all data and cast to json  
-        })
-        .then(data => { // after data fetch complete update state
-            setBlog(data)
-        })
-    },[])//no dependency , so it will fetch data after first time page rendered
+        setTimeout(() => { //timeout is used for just simulating real fetching time
+            fetch(' http://localhost:8000/blogs')
+                .then(result => {
+                    return result.json()
+                })
+                .then(data => {
+                    setBlog(data)
+                    setIsLoading(false)
+                })
+        }, 1000)
+    }, [])
 
 
-    return ( 
+    return (
         <div className="home">
-        {/* left && right : means first left will evalauate , if true then right will , if false right will not be evaluated */}
-        {/* Initially blogs is null and  fetching takes time so untill blogs are feteched can't show them */}
-        {blogs && <BlogList blogs={blogs} title="All blogs" />}
+            {isLoading && <div className="loading">Loading........</div>}
+            {blogs && <BlogList blogs={blogs} title="All blogs" />}
         </div>
-     );
+    );
 }
- 
+
 export default Home;
