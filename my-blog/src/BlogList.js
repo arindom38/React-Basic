@@ -1,5 +1,5 @@
 //this props component is reuseable 
-const BlogList = ({blogs,title,handleDelete}) => { //Refactoring 
+const BlogList = ({blogs,title}) => { //Refactoring 
     return (
         <div className="Blog-List">
         <h2>{title}</h2>
@@ -8,7 +8,6 @@ const BlogList = ({blogs,title,handleDelete}) => { //Refactoring
                     <h2>{blog.title}</h2>
                     <h4>Created By {blog.author}</h4>
                     <p>{blog.body}</p>
-                    <button onClick={() => handleDelete(blog.id)}>Delete</button>
                 </div>
             ))}
         </div>
