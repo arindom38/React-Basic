@@ -9,10 +9,12 @@ const Home = () => {
         {title: "Spring MVC",body:"A Spring ....",author:"Kyle",id:3},
     ])
 
+    const [count,setCount] = useState(0)
+
     //this function execute in evertime this component is rendered
     useEffect(() => {
      console.log("I will come everytime you render")   
-    })
+    },[count]) //Dependency array only affect render to the dependencies afte click render button one time
 
     const handleDelete = (id) => {
         const newBlogs = blogs.filter(blog=> (blog.id !== id))
@@ -21,6 +23,8 @@ const Home = () => {
     return ( 
         <div className="home">
             <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete} /> {/*passing/receiveing the functions as props*/}
+            <button onClick={() => (setCount(count+1))}>Render me</button>
+            <p>you click {count} times</p>
         </div>
      );
 }
