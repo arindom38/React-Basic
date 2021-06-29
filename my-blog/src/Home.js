@@ -1,20 +1,21 @@
 import { useState } from "react";
 
 const Home = () => {
-    //reactive value
-    const [name,setName] = useState("Jack") //initial value jack
-    const [age,setAge] = useState(20) //initial age 20
-
-    const handleClick = () => {
-        //change state on clik event
-        setName("Mario")
-        setAge(30)    
-    }
+    //output lists
+    const [blogs,setBlog] = useState([
+        {title: "React Begining",body:"A react ....",author:"Kyle",id:1}, //an object
+        {title: "Node js Begining",body:"A NOde js ....",author:"Jack",id:2},
+        {title: "Spring MVC",body:"A Spring ....",author:"Mario",id:3},
+    ])
     return ( 
         <div className="home">
-            <h1>Home Page</h1>
-            <p>{name} is {age} years old</p>
-            <button onClick={handleClick}>Click Me</button>
+            {blogs.map(blog => (
+                <div className="blog-preview" key={blog.id}>
+                    <h2>{blog.title}</h2>
+                    <h4>Created By {blog.author}</h4>
+                    <p>{blog.body}</p>
+                </div>
+            ))}
         </div>
      );
 }
