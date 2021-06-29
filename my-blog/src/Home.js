@@ -10,9 +10,7 @@ const Home = () => {
     ])
     return ( 
         <div className="home">
-            <BlogList blogs={blogs} title="All blogs" /> {/* Props pass value from one ccomponent to another*/} 
-            {/* props can be reuse with different functionality*/} 
-            <BlogList blogs={blogs.filter(blog => ( blog.author === 'Kyle'))} title="Kyle's blogs" /> {/*filtering the blogs, only kyle blogs show*/} 
+            <BlogList blogs={blogs} title="All blogs" /> 
         </div>
      );
 }
