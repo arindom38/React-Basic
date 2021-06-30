@@ -7,8 +7,6 @@ const useFetch = (url) => {
 
     useEffect(() => {
         const abortCont = new AbortController() // A constructor for abortint any request 
-
-        setTimeout(() => { //timeout is used for just simulating real fetching time
             fetch(url, { signal: abortCont.signal })
                 .then(res => {
                     if (!res.ok) {
@@ -29,7 +27,6 @@ const useFetch = (url) => {
                         setErrorMssg(err.message)
                     }
                 })
-        }, 1000)
 
         return () => {
             abortCont.abort() //useEffect Cleanup: abort request when the component is switched
