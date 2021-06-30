@@ -4,11 +4,20 @@ const Create = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [author, setAuthor] = useState('')
+    const [isLoading,setIsLoading] = useState(false)
     
     const handleSubmit = (e) => {
         e.preventDefault()
         const blog = {title,body,author}
-        console.log(blog)
+        setIsLoading(true) //after submitting 
+        fetch(process.env.REACT_APP_DB_URL,{
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(blog)
+        })
+        .then((res)=>{
+            setIsLoading(false)
+        })
     }
     return (
         <div className="create">
@@ -36,7 +45,10 @@ const Create = () => {
                     <option value="mario">mario</option>
                     <option value="yoshi">yoshi</option>
                 </select>
-                <button>Add Blog</button>
+                {!isLoading && <button>Add Blog</button>}
+                {isLoading && <button disabled>Add Blog</button>}
+                {isLoading && <p>Creating New Blog......</p>}
+                
             </form>
         </div>
     );
