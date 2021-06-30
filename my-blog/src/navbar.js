@@ -7,7 +7,7 @@ const Navbar = () => {
             <h1>The React Blog</h1>
             <div className="links">
                 <Link to="/">Home</Link> {/* Link will not send req to server, rather link to the route in app.js*/}
-                <Link to="/Create">New Blog</Link>
+                <Link to="/create">New Blog</Link>
                 <Link to="/Myblog">My Blog</Link>
                 <Link to="/Contact">Contact</Link>
             </div>

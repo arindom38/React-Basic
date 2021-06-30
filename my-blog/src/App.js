@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
+import BlogDetails from './BlogDetails';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 //root component which will be render inside index.js
 function App() {
@@ -15,6 +16,9 @@ function App() {
             </Route>
             <Route exact path="/create"> {/* Route for only home page*/}
               <Create/>
+            </Route>
+            <Route exact path="/blogs/:id"> {/* Route for only home page*/}
+              <BlogDetails />
             </Route>
           </Switch>
         </div>
