@@ -3,7 +3,7 @@ import useFetch from "./useFetch";
 //command for integrating json server: npx json-server --watch data/Db.json --port 8000
 const Home = () => {
     //output lists
-    const {data, isLoading ,errorMssg } = useFetch('http://localhost:8000/blogs')
+    const {data, isLoading ,errorMssg } = useFetch(process.env.REACT_APP_DB_URL)
 
 
     return (

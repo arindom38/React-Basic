@@ -14,10 +14,10 @@ function App() {
             <Route exact path="/"> {/* Route for only home page, exact property match the path exactly or it will math the first character*/}
               <Home />
             </Route>
-            <Route exact path="/create"> {/* Route for only home page*/}
+            <Route exact path="/create"> {/* Route for only create page*/}
               <Create/>
             </Route>
-            <Route exact path="/blogs/:id"> {/* Route for only home page*/}
+            <Route exact path="/blogs/:id"> {/* Route for only blog details page*/}
               <BlogDetails />
             </Route>
           </Switch>
