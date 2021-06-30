@@ -4,16 +4,18 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 //root component which will be render inside index.js
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div className="content">
-        <Router>
-          <Switch path="/"> {/* Route for only home page*/}
-            <Home />
+    <Router>
+      <div className="App">
+        <Navbar /> {/*no routes added so this will be avialable in every page*/}
+        <div className="content">
+          <Switch >
+            <Route path="/"> {/* Route for only home page*/}
+              <Home />
+            </Route>
           </Switch>
-        </Router>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
