@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
     const [data, setData] = useState(null)
@@ -6,8 +6,10 @@ const useFetch = (url) => {
     const [errorMssg, setErrorMssg] = useState(null)
 
     useEffect(() => {
+        const abortCont = new AbortController() // A constructor for abortint any request 
+
         setTimeout(() => { //timeout is used for just simulating real fetching time
-            fetch(url)
+            fetch(url, { signal: abortCont.signal })
                 .then(res => {
                     if (!res.ok) {
                         throw Error('could not find the resources')
@@ -20,13 +22,21 @@ const useFetch = (url) => {
                     setErrorMssg(null)
                 })
                 .catch(err => {
-                    setIsLoading(false)
-                    setErrorMssg(err.message)
+                    if (err.name === 'AbortError') { // if requet aborted no need to change state
+                        console.log('Fetch Aborted')
+                    } else {
+                        setIsLoading(false)
+                        setErrorMssg(err.message)
+                    }
                 })
         }, 1000)
+
+        return () => {
+            abortCont.abort() //useEffect Cleanup: abort request when the component is switched
+        }
     }, [url])
 
-    return {data,isLoading,errorMssg};
+    return { data, isLoading, errorMssg };
 }
- 
+
 export default useFetch;
